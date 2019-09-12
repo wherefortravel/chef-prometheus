@@ -64,11 +64,11 @@ template node['prometheus']['flags']['config.file'] do
 end
 
 # monitor our server instance
-prometheus_job 'prometheus' do
-  scrape_interval   '15s'
-  target            "localhost#{node['prometheus']['flags']['web.listen-address']}"
-  metrics_path      node['prometheus']['flags']['web.telemetry-path']
-end
+#prometheus_job 'prometheus' do
+#  scrape_interval   '15s'
+#  target            "localhost#{node['prometheus']['flags']['web.listen-address']}"
+#  metrics_path      node['prometheus']['flags']['web.telemetry-path']
+#end
 
 # -- Do the install -- #
 
