@@ -41,7 +41,7 @@ end
 default['prometheus']['log_dir']                                                          = '/var/log/prometheus'
 
 # Prometheus version to build
-default['prometheus']['version']                                                          = '2.2.1'
+default['prometheus']['version']                                                          = '2.12.0'
 
 # Prometheus source repository.
 default['prometheus']['source']['git_repository']                                         = 'https://github.com/prometheus/prometheus.git'
@@ -65,7 +65,7 @@ default['prometheus']['binary_url']                                             
 
 # Checksum for pre-compiled binary
 # Default for testing purposes
-default['prometheus']['checksum']                                                         = 'caddbbbe3ef8545c6cefb32f9a11207ae18dcc788e8d0fb19659d88c58d14b37'
+default['prometheus']['checksum']                                                         = 'b9f57b6e64fb3048742cfa7dbcc727e1df906d8020ef246a5e81b7959ae97e08'
 
 # If file extension of your binary can not be determined by the URL
 # then define it here. Example 'tar.bz2'
@@ -230,7 +230,7 @@ default['prometheus']['alertmanager']['install_method']                         
 default['prometheus']['alertmanager']['binary']                                           = "#{node['prometheus']['dir']}/alertmanager"
 
 # Alertmanager version to build
-default['prometheus']['alertmanager']['version']                                          = '0.14.0'
+default['prometheus']['alertmanager']['version']                                          = '0.19.0'
 
 # Alertmanager source repository.
 default['prometheus']['alertmanager']['git_repository']                                   = 'https://github.com/prometheus/alertmanager.git'
@@ -245,7 +245,7 @@ default['prometheus']['alertmanager']['binary_url']                             
 
 # Checksum for pre-compiled binary
 # Default for testing purposes
-default['prometheus']['alertmanager']['checksum']                                         = 'caddbbbe3ef8545c6cefb32f9a11207ae18dcc788e8d0fb19659d88c58d14b37'
+default['prometheus']['alertmanager']['checksum']                                         = '6191788f8b91a05955fcdc2ab4bc7d0edf70e5039f3acffb284d75745cc80d67'
 
 # If file extension of your binary can not be determined by the URL
 # then define it here. Example 'tar.bz2'
