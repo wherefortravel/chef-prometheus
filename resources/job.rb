@@ -4,7 +4,7 @@ property :labels,              Hash
 property :target,              [Array, String]
 property :metrics_path,        String, default: '/metrics'
 property :config_file,         String, default: lazy { node['prometheus']['flags']['config.file'] }
-config_file = lazy { node['prometheus']['flags']['config.file'] } 
+config_file = "/opt/prometheus/prometheus.yml"
 
 default_action :create
 
