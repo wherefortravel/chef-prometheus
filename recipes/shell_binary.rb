@@ -37,4 +37,5 @@ bash 'install_prometheus' do
   group    'root'
   action   :nothing
   notifies :restart, 'service[prometheus]'
+  not_if { ::File.exists?("#{node['prometheus']['dir']}/prometheus")  }
 end
