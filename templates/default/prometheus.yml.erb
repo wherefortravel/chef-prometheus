@@ -4,7 +4,7 @@ global:
   <%=k%>: "<%=v%>"
   <%end%>
   external_labels:
-  <%node['prometheus']['global']['external_labels'].each do |k,v|%>
+  <%node['prometheus']['external_labels'].each do |k,v|%>
     <%=k%>: "<%=v%>"
   <%end%>
 
