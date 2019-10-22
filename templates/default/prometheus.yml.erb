@@ -3,6 +3,10 @@ global:
   <%node['prometheus']['global'].each do |k,v|%>
   <%=k%>: "<%=v%>"
   <%end%>
+  external_labels:
+  <%node['prometheus']['global']['external_labels'].each do |k,v|%>
+    <%=k%>: "<%=v%>"
+  <%end%>
 
 scrape_configs:
 <% @jobs.each do |name, job| %>
