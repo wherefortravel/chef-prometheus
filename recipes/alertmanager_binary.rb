@@ -26,14 +26,21 @@ end
 dir_name = ::File.basename(node['prometheus']['dir'])
 dir_path = ::File.dirname(node['prometheus']['dir'])
 
-ark dir_name do
-  url node['prometheus']['alertmanager']['binary_url']
+tar_extract "#{node{'prometheus']['alertmanager']['binary_url']]} do
   checksum node['prometheus']['alertmanager']['checksum']
-  version node['prometheus']['alertmanager']['version']
-  prefix_root Chef::Config['file_cache_path']
-  path dir_path
+  target_dir dir_path
   owner node['prometheus']['user']
   group node['prometheus']['group']
-  extension node['prometheus']['alertmanager']['file_extension'] unless node['prometheus']['alertmanager']['file_extension'].empty?
-  action :put
 end
+
+#ark dir_name do
+#  url node['prometheus']['alertmanager']['binary_url']
+#  checksum node['prometheus']['alertmanager']['checksum']
+#  version node['prometheus']['alertmanager']['version']
+#  prefix_root Chef::Config['file_cache_path']
+#  path dir_path
+#  owner node['prometheus']['user']
+#  group node['prometheus']['group']
+#  extension node['prometheus']['alertmanager']['file_extension'] unless node['prometheus']['alertmanager']['file_extension'].empty?
+#  action :put
+#end
