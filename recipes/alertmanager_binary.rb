@@ -29,7 +29,7 @@ dir_path = ::File.dirname(node['prometheus']['dir'])
 tar_extract "#{node['prometheus']['alertmanager']['binary_url']}" do
   checksum node['prometheus']['alertmanager']['checksum']
   target_dir dir_path
-  owner node['prometheus']['user']
+  user  node['prometheus']['user']
   group node['prometheus']['group']
 end
 
