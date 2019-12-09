@@ -26,16 +26,10 @@ end
 dir_name = ::File.basename(node['prometheus']['dir'])
 dir_path = ::File.dirname(node['prometheus']['dir'])
 
-execute "chown-prometheus" do
-  command "chown -R prometheus:prometheus /opt/prometheus"
-  user "root"
-  action :nothing
-end
 
 tar_extract "#{node['prometheus']['alertmanager']['binary_url']}" do
   checksum node['prometheus']['alertmanager']['checksum']
   target_dir dir_path
-  notifies :run, execute["chown-prometheus"]
   group node['prometheus']['group']
 end
 
