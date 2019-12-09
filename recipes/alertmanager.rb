@@ -47,6 +47,10 @@ directory node['prometheus']['alertmanager']['storage.path'] do
   recursive true
 end
 
+# -- Do the install -- #
+
+include_recipe "prometheus::alertmanager_#{node['prometheus']['alertmanager']['install_method']}"
+ 
 # -- Write our Config -- #
 
 template node['prometheus']['alertmanager']['config.file'] do
@@ -61,9 +65,6 @@ template node['prometheus']['alertmanager']['config.file'] do
   notifies  :restart, 'service[alertmanager]'
 end
 
-# -- Do the install -- #
-
-include_recipe "prometheus::alertmanager_#{node['prometheus']['alertmanager']['install_method']}"
 
 case node['prometheus']['init_style']
 when 'runit'
