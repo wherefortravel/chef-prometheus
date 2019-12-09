@@ -35,7 +35,7 @@ end
 tar_extract "#{node['prometheus']['alertmanager']['binary_url']}" do
   checksum node['prometheus']['alertmanager']['checksum']
   target_dir dir_path
-  notifies :run, execute "chown-prometheus"
+  notifies :run, execute["chown-prometheus"]
   group node['prometheus']['group']
 end
 
