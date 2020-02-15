@@ -31,7 +31,6 @@ dir_path = ::File.dirname(node['prometheus']['dir'])
 tar_extract "#{node['prometheus']['binary_url']}" do
   checksum node['prometheus']['checksum']
   target_dir dir_path
-  user node['prometheus']['user']
   group node['prometheus']['group']
 end
 
