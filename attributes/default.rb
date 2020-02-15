@@ -230,7 +230,7 @@ default['prometheus']['alertmanager']['install_method']                         
 default['prometheus']['alertmanager']['binary']                                           = "#{node['prometheus']['dir']}/alertmanager"
 
 # Alertmanager version to build
-default['prometheus']['alertmanager']['version']                                          = '0.19.0'
+default['prometheus']['alertmanager']['version']                                          = '0.20.0'
 
 # Alertmanager source repository.
 default['prometheus']['alertmanager']['git_repository']                                   = 'https://github.com/prometheus/alertmanager.git'
@@ -245,7 +245,7 @@ default['prometheus']['alertmanager']['binary_url']                             
 
 # Checksum for pre-compiled binary
 # Default for testing purposes
-default['prometheus']['alertmanager']['checksum']                                         = '6191788f8b91a05955fcdc2ab4bc7d0edf70e5039f3acffb284d75745cc80d67'
+default['prometheus']['alertmanager']['checksum']                                         = '3a826321ee90a5071abf7ba199ac86f77887b7a4daa8761400310b4191ab2819'
 
 # If file extension of your binary can not be determined by the URL
 # then define it here. Example 'tar.bz2'
