@@ -33,6 +33,12 @@ tar_extract "#{node['prometheus']['alertmanager']['binary_url']}" do
   group node['prometheus']['group']
 end
 
+link '/opt/prometheus/alertmanager' do
+  to "/opt/alertmanager-#{node['prometheus']['alertmanager']['version']}.linux_amd64/alertmanager"
+end
+link '/opt/prometheus/amtool' do
+  to "/opt/alertmanager-#{node['prometheus']['alertmanager']['version']}.linux_amd64/amtool"
+end
 
 #ark dir_name do
 #  url node['prometheus']['alertmanager']['binary_url']
