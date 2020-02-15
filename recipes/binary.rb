@@ -26,14 +26,43 @@ end
 dir_name = ::File.basename(node['prometheus']['dir'])
 dir_path = ::File.dirname(node['prometheus']['dir'])
 
-ark dir_name do
-  url node['prometheus']['binary_url']
+
+
+tar_extract "#{node['prometheus']['binary_url']}" do
   checksum node['prometheus']['checksum']
-  version node['prometheus']['version']
-  prefix_root Chef::Config['file_cache_path']
-  path dir_path
-  owner node['prometheus']['user']
+  target_dir dir_path
+  user node['prometheus']['user']
   group node['prometheus']['group']
-  extension node['prometheus']['file_extension'] unless node['prometheus']['file_extension'].empty?
-  action :put
 end
+
+link '/opt/prometheus/prometheus' do
+  to "/opt/prometheus-#{node['prometheus']['version']}.linux-amd64/prometheus"
+  notifies :restart, 'service[prometheus]', :delayed
+end
+link '/opt/prometheus/consoles' do
+  to "/opt/prometheus-#{node['prometheus']['version']}.linux-amd64/consoles"
+  notifies :restart, 'service[prometheus]', :delayed
+end
+link '/opt/prometheus/console_libraries' do
+  to "/opt/prometheus-#{node['prometheus']['version']}.linux-amd64/console_libraries"
+  notifies :restart, 'service[prometheus]', :delayed
+end
+link '/opt/prometheus/promtool' do
+  to "/opt/prometheus-#{node['prometheus']['version']}.linux-amd64/promtool"
+end
+link '/opt/prometheus/tsdb' do
+  to "/opt/prometheus-#{node['prometheus']['version']}.linux-amd64/tsdb"
+end
+
+
+#ark dir_name do
+#  url node['prometheus']['binary_url']
+#  checksum node['prometheus']['checksum']
+#  version node['prometheus']['version']
+#  prefix_root Chef::Config['file_cache_path']
+#  path dir_path
+#  owner node['prometheus']['user']
+#  group node['prometheus']['group']
+#  extension node['prometheus']['file_extension'] unless node['prometheus']['file_extension'].empty?
+#  action :put
+#end
