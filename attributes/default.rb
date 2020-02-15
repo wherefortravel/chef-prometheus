@@ -41,7 +41,7 @@ end
 default['prometheus']['log_dir']                                                          = '/var/log/prometheus'
 
 # Prometheus version to build
-default['prometheus']['version']                                                          = '2.12.0'
+default['prometheus']['version']                                                          = '2.16.0'
 
 # Prometheus source repository.
 default['prometheus']['source']['git_repository']                                         = 'https://github.com/prometheus/prometheus.git'
@@ -65,7 +65,7 @@ default['prometheus']['binary_url']                                             
 
 # Checksum for pre-compiled binary
 # Default for testing purposes
-default['prometheus']['checksum']                                                         = 'b9f57b6e64fb3048742cfa7dbcc727e1df906d8020ef246a5e81b7959ae97e08'
+default['prometheus']['checksum']                                                         = 'c04e631d18e186b66a51cac3062157298e037ffae784f35ccaaf29e496d65d3f'
 
 # If file extension of your binary can not be determined by the URL
 # then define it here. Example 'tar.bz2'
