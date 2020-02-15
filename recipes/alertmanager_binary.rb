@@ -35,6 +35,7 @@ end
 
 link '/opt/prometheus/alertmanager' do
   to "/opt/alertmanager-#{node['prometheus']['alertmanager']['version']}.linux-amd64/alertmanager"
+  notifies :restart, 'service[alertmanager]', :delayed
 end
 link '/opt/prometheus/amtool' do
   to "/opt/alertmanager-#{node['prometheus']['alertmanager']['version']}.linux-amd64/amtool"
