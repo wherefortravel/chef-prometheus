@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: prometheus
+# Cookbook:: prometheus
 # Recipe:: alertmanager_binary
 #
 # Author: Javier Zunzunegui <javier.zunzunegui.b@gmail.com>
@@ -26,8 +26,7 @@ end
 dir_name = ::File.basename(node['prometheus']['dir'])
 dir_path = ::File.dirname(node['prometheus']['dir'])
 
-
-tar_extract "#{node['prometheus']['alertmanager']['binary_url']}" do
+tar_extract (node['prometheus']['alertmanager']['binary_url']).to_s do
   checksum node['prometheus']['alertmanager']['checksum']
   target_dir dir_path
   group node['prometheus']['group']
@@ -41,7 +40,7 @@ link '/opt/prometheus/amtool' do
   to "/opt/alertmanager-#{node['prometheus']['alertmanager']['version']}.linux-amd64/amtool"
 end
 
-#ark dir_name do
+# ark dir_name do
 #  url node['prometheus']['alertmanager']['binary_url']
 #  checksum node['prometheus']['alertmanager']['checksum']
 #  version node['prometheus']['alertmanager']['version']
@@ -51,4 +50,4 @@ end
 #  group node['prometheus']['group']
 #  extension node['prometheus']['alertmanager']['file_extension'] unless node['prometheus']['alertmanager']['file_extension'].empty?
 #  action :put
-#end
+# end

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: prometheus
+# Cookbook:: prometheus
 # Recipe:: alertmanager
 #
 # Author: Paul Magrath <paul@paulmagrath.com>
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe 'build-essential::default'
+build_essential 'install compilation tools'
 
 user node['prometheus']['user'] do
   system true
@@ -50,7 +50,7 @@ end
 # -- Do the install -- #
 
 include_recipe "prometheus::alertmanager_#{node['prometheus']['alertmanager']['install_method']}"
- 
+
 # -- Write our Config -- #
 
 template node['prometheus']['alertmanager']['config.file'] do
@@ -64,7 +64,6 @@ template node['prometheus']['alertmanager']['config.file'] do
   )
   notifies  :restart, 'service[alertmanager]'
 end
-
 
 case node['prometheus']['init_style']
 when 'runit'

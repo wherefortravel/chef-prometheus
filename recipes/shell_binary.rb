@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: prometheus
+# Cookbook:: prometheus
 # Recipe:: shell_binary
 #
 # Author: Rohit Gupta - @rohit01
@@ -37,5 +37,5 @@ bash 'install_prometheus' do
   group    'root'
   action   :nothing
   notifies :restart, 'service[prometheus]'
-  not_if { ::File.exists?("#{node['prometheus']['dir']}/prometheus")  }
+  not_if { ::File.exist?("#{node['prometheus']['dir']}/prometheus")  }
 end

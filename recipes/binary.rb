@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: prometheus
+# Cookbook:: prometheus
 # Recipe:: binary
 #
 # Author: Kristian Jarvenpaa <kristian.jarvenpaa@gmail.com>
@@ -26,9 +26,7 @@ end
 dir_name = ::File.basename(node['prometheus']['dir'])
 dir_path = ::File.dirname(node['prometheus']['dir'])
 
-
-
-tar_extract "#{node['prometheus']['binary_url']}" do
+tar_extract (node['prometheus']['binary_url']).to_s do
   checksum node['prometheus']['checksum']
   target_dir dir_path
   group node['prometheus']['group']
@@ -53,8 +51,7 @@ link '/opt/prometheus/tsdb' do
   to "/opt/prometheus-#{node['prometheus']['version']}.linux-amd64/tsdb"
 end
 
-
-#ark dir_name do
+# ark dir_name do
 #  url node['prometheus']['binary_url']
 #  checksum node['prometheus']['checksum']
 #  version node['prometheus']['version']
@@ -64,4 +61,4 @@ end
 #  group node['prometheus']['group']
 #  extension node['prometheus']['file_extension'] unless node['prometheus']['file_extension'].empty?
 #  action :put
-#end
+# end

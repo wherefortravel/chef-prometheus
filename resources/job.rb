@@ -3,8 +3,8 @@ property :scrape_timeout,      String
 property :labels,              Hash
 property :target,              [Array, String]
 property :metrics_path,        String, default: '/metrics'
-property :config_file,         String, default: lazy { node['prometheus']['v2_cli_opts']['config.file'] } 
-config_file =  node['prometheus']['v2_cli_opts']['config.file'] 
+property :config_file,         String, default: lazy { node['prometheus']['v2_cli_opts']['config.file'] }
+config_file =  node['prometheus']['v2_cli_opts']['config.file']
 
 default_action :create
 
