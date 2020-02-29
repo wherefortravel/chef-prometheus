@@ -6,7 +6,7 @@ description      'Installs/Configures Prometheus'
 version          '0.6.45'
 source_url 'https://github.com/elijah/chef-prometheus'
 issues_url 'https://github.com/elijah/chef-prometheus/issues'
-chef_version '>= 12.15.25', '< 15'
+chef_version '>= 12.15.25', '< 16'
 
 %w(ubuntu debian centos redhat fedora).each do |os|
   supports os
