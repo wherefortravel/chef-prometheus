@@ -53,17 +53,17 @@ include_recipe "prometheus::alertmanager_#{node['prometheus']['alertmanager']['i
 
 # -- Write our Config -- #
 
-template node['prometheus']['alertmanager']['config.file'] do
-  cookbook  node['prometheus']['alertmanager']['config_cookbook_name']
-  source    node['prometheus']['alertmanager']['config_template_name']
-  mode      '0644'
-  owner     node['prometheus']['user']
-  group     node['prometheus']['group']
-  variables(
-    notification_config: node['prometheus']['alertmanager']['notification']
-  )
-  notifies  :restart, 'service[alertmanager]'
-end
+#template node['prometheus']['alertmanager']['config.file'] do
+#  cookbook  node['prometheus']['alertmanager']['config_cookbook_name']
+#  source    node['prometheus']['alertmanager']['config_template_name']
+#  mode      '0644'
+#  owner     node['prometheus']['user']
+#  group     node['prometheus']['group']
+#  variables(
+#    notification_config: node['prometheus']['alertmanager']['notification']
+#  )
+#  notifies  :restart, 'service[alertmanager]'
+#end
 
 case node['prometheus']['init_style']
 when 'runit'
